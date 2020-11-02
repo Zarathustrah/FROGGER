@@ -54,9 +54,9 @@ function init() {
       grid.appendChild(cell)
     }
     moveObstacles()
-    moveObstaclesInterval = setInterval(moveObstacles, 500)
+    // moveObstaclesInterval = setInterval(moveObstacles, 500)
     movePlatforms()
-    movePlatformsInterval = setInterval(movePlatforms, 800)
+    // movePlatformsInterval = setInterval(movePlatforms, 800)
     displayHomeBases()
     addPlayer()
     
@@ -67,11 +67,6 @@ function init() {
 
 
 
-
-
-
-
-  
 
   
 
@@ -153,14 +148,14 @@ function init() {
   function carryPlayerLeft() {
     if (platformsLeft.includes(playerIndex) && playerIndex % width > 0) {
       playerIndex -= 1
-      addPlayer()
+      // addPlayer()
     }
   }
 
   function carryPlayerRight() {
     if (platformsRight.includes(playerIndex) && playerIndex % width < width - 1) {
       playerIndex += 1
-      addPlayer()
+      // addPlayer()
     }
   }
   
@@ -227,12 +222,12 @@ function init() {
     })
   }
 
-  function playerHit() {
-    lives -= 1
-    playerIndex = 148
-    addPlayer()
+  function playerHit() { 
+    cells[playerIndex].classList.remove('player')
+    resetPlayer()
     displayLives()
     playerLost()
+    lives -= 1
   }
 
   function resetPlayer() {
