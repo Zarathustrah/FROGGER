@@ -1,0 +1,97 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+.wrapper {
+  height: 600px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  border: 1px solid; 
+}
+
+.lives-score {
+  display: flex;
+}
+
+h3 {
+  margin: 15px;
+}
+
+.start-screen {
+  height: 500px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid;
+}
+
+.grid {
+  height: 500px;
+  width: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid;
+}
+
+.grid div {
+  border: 1px solid;
+  flex-grow: 1;
+  height: 7.16%;
+  width: 9%;;
+}
+
+.player {
+  background-color: green;
+}
+
+.obstacle-left {
+  background-color: hotpink;
+}
+
+.obstacle-right {
+  background-color: yellow;
+}
+
+.platform-left {
+  background-color: brown;
+}
+
+.platform-right {
+  background-color: chartreuse;
+}
+
+.water {
+  background-color: darkblue;
+}
+
+.road {
+  background-color: lightgrey;
+}
+
+.home-base {
+  background-color: black;
+}
+
+.start {
+  margin: 15px;
+}
