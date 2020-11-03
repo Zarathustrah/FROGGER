@@ -56,7 +56,7 @@ function init() {
     moveObstacles()
     // moveObstaclesInterval = setInterval(moveObstacles, 500)
     movePlatforms()
-    // movePlatformsInterval = setInterval(movePlatforms, 800)
+    movePlatformsInterval = setInterval(movePlatforms, 800)
     displayHomeBases()
     addPlayer()
     
@@ -75,7 +75,7 @@ function init() {
   function displayObstacles() {
     cells.forEach(cell => cell.classList.remove('obstacle-left', 'obstacle-right'))
     obstaclesLeft.forEach(obstacle => cells[obstacle].classList.add('obstacle-left'))
-    obstaclesRight.forEach(obstacle => cells[obstacle].classList.add('obstacle-right'))
+    obstaclesRight.forEach(obstacle => cells[obstacle].classList.add('obstacle-right'))    
     displayRoad()
   }
   
@@ -147,15 +147,17 @@ function init() {
 
   function carryPlayerLeft() {
     if (platformsLeft.includes(playerIndex) && playerIndex % width > 0) {
+      cells[playerIndex].classList.remove('player')
       playerIndex -= 1
-      // addPlayer()
+      addPlayer()
     }
   }
 
   function carryPlayerRight() {
     if (platformsRight.includes(playerIndex) && playerIndex % width < width - 1) {
+      cells[playerIndex].classList.remove('player')
       playerIndex += 1
-      // addPlayer()
+      addPlayer()
     }
   }
   
