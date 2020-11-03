@@ -1,6 +1,7 @@
 function init() {
 
   const startScreen = document.querySelector('start-screen')
+  const playButton = document.querySelector('play-button')
   const start = document.querySelector('.start')
   const grid = document.querySelector('.grid')
   const livesTally = document.querySelector('#lives')
@@ -34,17 +35,19 @@ function init() {
 
   // **** INITIATE GAME GRID
 
-  // function createIntroPage() {
-  //   grid.style.display = 'none'
-  //   start.style.visibility = 'hidden'
-  //   livesScoreDisplay.style.visibility = 'hidden'
-  //   startScreen.style.display = 'flex'
-  // }
+  function displayIntroPage() {
+    grid.style.display = 'none'
+    start.style.visibility = 'hidden'
+    livesScoreDisplay.style.visibility = 'hidden'
+    startScreen.style.display = 'flex'
+  }
 
-  // function removeIntroPage() {
-
-
-  // }
+  function removeIntroPage() {
+    grid.style.display = 'flex'
+    start.style.visibility = 'visible'
+    livesScoreDisplay.style.visibility = 'visible'
+    startScreen.style.display = 'none'
+  }
 
   function createGrid() {
     for (let i = 0; i < gridCellCount; i += 1) {
@@ -241,7 +244,6 @@ function init() {
       playerCount -= 1
       addPoints(500)
       resetPlayer()
-      console.log(playerCount)
             
       if (playerCount > 0 && playerHome !== 5) {
         resetPlayer()
@@ -282,7 +284,8 @@ function init() {
 
   
 
-
+  displayIntroPage()
+  removeIntroPage()
 
 
 
@@ -322,7 +325,7 @@ function init() {
   
   
   
-  // createIntroPage()
+  
  
 
 
@@ -333,8 +336,9 @@ function init() {
 
 
 
-
+  playButton.addEventListener('click', removeIntroPage)
   document.addEventListener('keydown', handleMovePlayer)
+ 
 
 }
 window.addEventListener('DOMContentLoaded', init)
