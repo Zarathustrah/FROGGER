@@ -16,7 +16,7 @@ function init() {
   let playerCount = 5
   const playerHome = 0
   let score = 0
-  let playerIndex = 9
+  let playerIndex = 2
   let obstaclesLeft = [142, 139, 136, 120, 117, 114, 98]
   let obstaclesRight = [121, 124, 127, 99, 102, 105]
   let platformsLeft = [65, 64, 60, 59, 56, 55, 43, 42, 41, 40, 36, 35, 34, 33, 21, 20, 19, 15, 14, 13 ]
@@ -26,7 +26,7 @@ function init() {
   const homeBases = [0, 3, 5, 7, 10]
   let moveObstaclesInterval 
   let movePlatformsInterval
-  const gameWon = false
+  let gameWon = false
   let gameLost = false
   let resultStatus = ''
   // const collision = false
@@ -56,7 +56,7 @@ function init() {
     moveObstacles()
     // moveObstaclesInterval = setInterval(moveObstacles, 500)
     movePlatforms()
-    movePlatformsInterval = setInterval(movePlatforms, 800)
+    // movePlatformsInterval = setInterval(movePlatforms, 800)
     displayHomeBases()
     addPlayer()
     
@@ -146,16 +146,14 @@ function init() {
   }
 
   function carryPlayerLeft() {
-    if (platformsLeft.includes(playerIndex) && playerIndex % width > 0) {
-      cells[playerIndex].classList.remove('player')
+    if (platformsLeft.includes(playerIndex - 1) && playerIndex % width > 0) {
       playerIndex -= 1
       addPlayer()
-    }
+    } 
   }
 
   function carryPlayerRight() {
-    if (platformsRight.includes(playerIndex) && playerIndex % width < width - 1) {
-      cells[playerIndex].classList.remove('player')
+    if (platformsRight.includes(playerIndex + 1) && playerIndex % width < width - 1) {
       playerIndex += 1
       addPlayer()
     }
@@ -192,7 +190,7 @@ function init() {
   }
  
   function addPlayer() {
-    cells[playerIndex].classList.remove('player')
+    cells.forEach(cell => cell.classList.remove('player'))
     cells[playerIndex].classList.add('player')
   }
 
@@ -233,7 +231,7 @@ function init() {
   }
 
   function resetPlayer() {
-    playerIndex = 148
+    playerIndex = 2
     addPlayer()
   }
 
@@ -243,12 +241,14 @@ function init() {
       playerCount -= 1
       addPoints(500)
       resetPlayer()
+      console.log(playerCount)
             
-      if (playerCount > 1 && playerHome !== 5) {
+      if (playerCount > 0 && playerHome !== 5) {
         resetPlayer()
       } else {
+        gameWon = true
         addPoints(1000)
-        // endGame()
+        endGame()
         // displayResult()
       }
 
