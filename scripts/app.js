@@ -9,13 +9,13 @@ function init() {
   const livesScoreDisplay = document.querySelector('lives-score')
   
 
-  const cells = []
+  let cells = []
   const width = 11
   const height = 14
   const gridCellCount = width * height
   let lives = 5
   let playerCount = 5
-  const playerHome = 0
+  let playerHome = 0
   let score = 0
   let playerIndex = 2
   let obstaclesLeft = [142, 139, 136, 120, 117, 114, 98]
@@ -24,7 +24,7 @@ function init() {
   let platformsRight = [44, 45, 48, 49, 51, 52, 22, 23, 24, 28, 29, 30]
   let waterCells = []
   let roadCells = []
-  const homeBases = [0, 3, 5, 7, 10]
+  let homeBases = [0, 3, 5, 7, 10]
   let moveObstaclesInterval 
   let movePlatformsInterval
   let gameWon = false
@@ -36,17 +36,20 @@ function init() {
   // **** INITIATE GAME GRID
 
   function displayIntroPage() {
-    grid.style.display = 'none'
-    start.style.visibility = 'hidden'
-    livesScoreDisplay.style.visibility = 'hidden'
-    startScreen.style.display = 'flex'
+    // resetGame()
+    // grid.style.display = 'none'
+    // start.style.visibility = 'hidden'
+    // livesScoreDisplay.style.visibility = 'hidden'
+    // startScreen.style.display = 'flex'
+    console.log('clicked')
   }
 
   function removeIntroPage() {
-    grid.style.display = 'flex'
-    start.style.visibility = 'visible'
-    livesScoreDisplay.style.visibility = 'visible'
-    startScreen.style.display = 'none'
+    // grid.style.display = 'flex'
+    // start.style.visibility = 'visible'
+    // livesScoreDisplay.style.visibility = 'visible'
+    // startScreen.style.display = 'none'
+    console.log('clicked too')
   }
 
   function createGrid() {
@@ -284,8 +287,7 @@ function init() {
 
   
 
-  displayIntroPage()
-  removeIntroPage()
+
 
 
 
@@ -317,6 +319,31 @@ function init() {
     scoreTally.innerHTML = score
   }
 
+  function resetGame() {
+    while (grid.firstChild) {
+      grid.removeChild(grid.firstChild)
+    }
+    cells = []
+    lives = 5
+    playerCount = 5
+    playerHome = 0
+    score = 0
+    playerIndex = 2
+    obstaclesLeft = [142, 139, 136, 120, 117, 114, 98]
+    obstaclesRight = [121, 124, 127, 99, 102, 105]
+    platformsLeft = [65, 64, 60, 59, 56, 55, 43, 42, 41, 40, 36, 35, 34, 33, 21, 20, 19, 15, 14, 13 ]
+    platformsRight = [44, 45, 48, 49, 51, 52, 22, 23, 24, 28, 29, 30]
+    waterCells = []
+    roadCells = []
+    homeBases = [0, 3, 5, 7, 10]
+    moveObstaclesInterval 
+    movePlatformsInterval
+    gameWon = false
+    gameLost = false
+    resultStatus = ''
+    // const collision = false
+  }
+
 
   
   
@@ -326,6 +353,7 @@ function init() {
   
   
   
+  
  
 
 
@@ -335,7 +363,7 @@ function init() {
 
 
 
-
+  start.addEventListener('click', displayIntroPage)
   playButton.addEventListener('click', removeIntroPage)
   document.addEventListener('keydown', handleMovePlayer)
  
