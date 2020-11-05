@@ -20,8 +20,8 @@ function init() {
   let playerIndex = [148]
   let obstaclesLeft = [142, 139, 136, 120, 117, 114, 98]
   let obstaclesRight = [121, 124, 127, 99, 102, 105]
-  let platformsLeft = [65, 64, 60, 59, 56, 55, 43, 42, 41, 40, 36, 35, 34, 33, 21, 20, 19, 15, 14, 13 ]
-  let platformsRight = [44, 45, 48, 49, 51, 52, 22, 23, 24, 28, 29, 30]
+  let platformsLeft = [65, 64, 61, 60, 57, 56, 42, 41, 40, 39, 37, 36, 35, 34, 21, 20, 19, 15, 14, 13 ]
+  let platformsRight = [44, 45, 48, 49, 51, 52, 24, 25, 26, 29, 30, 31]
   let waterCells = []
   let roadCells = []
   let homeBases = [0, 3, 5, 7, 10]
@@ -30,7 +30,7 @@ function init() {
   let gameWon = false
   let gameLost = false
   let resultStatus = ''
-  // const collision = false
+
   
 
   // **** INITIATE GAME GRID
@@ -41,8 +41,6 @@ function init() {
     start.style.visibility = 'hidden'
     livesScoreDisplay.style.visibility = 'hidden'
     startScreen.style.display = 'flex'
-    stopGame()
-    console.log('clicked')
   }
   displayIntroPage()
 
@@ -69,11 +67,6 @@ function init() {
     addPlayer()
     
   }
-
-  
-
-
-
 
 
   
@@ -247,6 +240,8 @@ function init() {
   function playerWon() {
     if (homeBases.includes(playerIndex)) {
       playerCount -= 1
+      cells[playerIndex].classList.remove('home-base')
+      cells[playerIndex].classList.add('player-home')
       addPoints(500)
       resetPlayer()
             
@@ -257,7 +252,6 @@ function init() {
         addPoints(1000)
         stopGame()
         endGame()
-        // displayResult()
       }
 
     }
@@ -269,7 +263,7 @@ function init() {
       gameLost = true
       stopGame()
       endGame()
-      // displayResult()
+      resetGame()
       console.log('Game Over!')
     }
      
@@ -331,11 +325,11 @@ function init() {
     playerCount = 5
     playerHome = 0
     score = 0
-    playerIndex = 2
+    playerIndex = 148
     obstaclesLeft = [142, 139, 136, 120, 117, 114, 98]
     obstaclesRight = [121, 124, 127, 99, 102, 105]
-    platformsLeft = [65, 64, 60, 59, 56, 55, 43, 42, 41, 40, 36, 35, 34, 33, 21, 20, 19, 15, 14, 13 ]
-    platformsRight = [44, 45, 48, 49, 51, 52, 22, 23, 24, 28, 29, 30]
+    platformsLeft = [65, 64, 61, 60, 57, 56, 42, 41, 40, 39, 37, 36, 35, 34, 21, 20, 19, 15, 14, 13 ]
+    platformsRight = [44, 45, 48, 49, 51, 52, 24, 25, 26, 29, 30, 31]
     waterCells = []
     roadCells = []
     homeBases = [0, 3, 5, 7, 10]
@@ -346,27 +340,9 @@ function init() {
     resultStatus = ''
     livesTally.innerHTML = 5
     scoreTally.innerHTML = 0
+    stopGame()
     // const collision = false
   }
-
-
-  
-  
-  
- 
-  
-  
-  
-  
-  
- 
-
-
-
-
-
-
-
 
   start.addEventListener('click', displayIntroPage)
   playButton.addEventListener('click', removeIntroPage)
