@@ -36,19 +36,20 @@ function init() {
   // **** INITIATE GAME GRID
 
   function displayIntroPage() {
-    // resetGame()
-    // grid.style.display = 'none'
-    // start.style.visibility = 'hidden'
-    // livesScoreDisplay.style.visibility = 'hidden'
+    resetGame()
+    grid.style.display = 'none'
+    start.style.visibility = 'hidden'
+    // livesScoreDisplay.style.visibility = 'none'
     // startScreen.style.display = 'flex'
     console.log('clicked')
   }
+  displayIntroPage()
 
   function removeIntroPage() {
-    // grid.style.display = 'flex'
-    // start.style.visibility = 'visible'
-    // livesScoreDisplay.style.visibility = 'visible'
-    // startScreen.style.display = 'none'
+    grid.style.display = 'flex'
+    start.style.visibility = 'visible'
+    livesScoreDisplay.style.visibility = 'visible'
+    startScreen.style.display = 'none'
     console.log('clicked too')
   }
 
