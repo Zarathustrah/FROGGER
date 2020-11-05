@@ -56,7 +56,6 @@ function init() {
     for (let i = 0; i < gridCellCount; i += 1) {
       const cell = document.createElement('div')
       cells.push(cell)
-      cell.innerHTML = i 
       grid.appendChild(cell)
     }
     moveObstacles()
@@ -263,7 +262,6 @@ function init() {
       gameLost = true
       stopGame()
       endGame()
-      resetGame()
       console.log('Game Over!')
     }
      
