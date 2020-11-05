@@ -17,7 +17,7 @@ function init() {
   let playerCount = 5
   let playerHome = 0
   let score = 0
-  let playerIndex = 148
+  let playerIndex = [148]
   let obstaclesLeft = [142, 139, 136, 120, 117, 114, 98]
   let obstaclesRight = [121, 124, 127, 99, 102, 105]
   let platformsLeft = [65, 64, 60, 59, 56, 55, 43, 42, 41, 40, 36, 35, 34, 33, 21, 20, 19, 15, 14, 13 ]
@@ -41,6 +41,7 @@ function init() {
     start.style.visibility = 'hidden'
     livesScoreDisplay.style.visibility = 'hidden'
     startScreen.style.display = 'flex'
+    stopGame()
     console.log('clicked')
   }
   displayIntroPage()
@@ -254,6 +255,7 @@ function init() {
       } else {
         gameWon = true
         addPoints(1000)
+        stopGame()
         endGame()
         // displayResult()
       }
@@ -265,6 +267,7 @@ function init() {
   function playerLost() {
     if (lives === 0) {
       gameLost = true
+      stopGame()
       endGame()
       // displayResult()
       console.log('Game Over!')
@@ -298,12 +301,11 @@ function init() {
 
 
   
-
-  // function endGame() {
-  //   if (lives === 0 || ) {
-
-  //   }
-  // }
+  function stopGame() {
+    clearInterval(moveObstaclesInterval)
+    clearInterval(movePlatformsInterval)
+    start.innerHTML = 'Play Again!'
+  }
 
   // * SCORING
 
@@ -342,6 +344,8 @@ function init() {
     gameWon = false
     gameLost = false
     resultStatus = ''
+    livesTally.innerHTML = 5
+    scoreTally.innerHTML = 0
     // const collision = false
   }
 
