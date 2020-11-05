@@ -95,3 +95,7 @@ h3 {
 .player {
   background-color: green;
 }
+
+.play-button {
+  color: red;
+}

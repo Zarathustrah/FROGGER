@@ -1,12 +1,12 @@
 function init() {
 
-  const startScreen = document.querySelector('start-screen')
-  const playButton = document.querySelector('play-button')
+  const startScreen = document.querySelector('.start-screen')
+  const playButton = document.querySelector('.play-button')
   const start = document.querySelector('.start')
   const grid = document.querySelector('.grid')
   const livesTally = document.querySelector('#lives')
   const scoreTally = document.querySelector('#score')
-  const livesScoreDisplay = document.querySelector('lives-score')
+  const livesScoreDisplay = document.querySelector('.lives-score')
   
 
   let cells = []
@@ -17,7 +17,7 @@ function init() {
   let playerCount = 5
   let playerHome = 0
   let score = 0
-  let playerIndex = 2
+  let playerIndex = 148
   let obstaclesLeft = [142, 139, 136, 120, 117, 114, 98]
   let obstaclesRight = [121, 124, 127, 99, 102, 105]
   let platformsLeft = [65, 64, 60, 59, 56, 55, 43, 42, 41, 40, 36, 35, 34, 33, 21, 20, 19, 15, 14, 13 ]
@@ -39,8 +39,8 @@ function init() {
     resetGame()
     grid.style.display = 'none'
     start.style.visibility = 'hidden'
-    // livesScoreDisplay.style.visibility = 'none'
-    // startScreen.style.display = 'flex'
+    livesScoreDisplay.style.visibility = 'hidden'
+    startScreen.style.display = 'flex'
     console.log('clicked')
   }
   displayIntroPage()
@@ -50,7 +50,7 @@ function init() {
     start.style.visibility = 'visible'
     livesScoreDisplay.style.visibility = 'visible'
     startScreen.style.display = 'none'
-    console.log('clicked too')
+    createGrid()
   }
 
   function createGrid() {
@@ -61,15 +61,15 @@ function init() {
       grid.appendChild(cell)
     }
     moveObstacles()
-    // moveObstaclesInterval = setInterval(moveObstacles, 500)
+    moveObstaclesInterval = setInterval(moveObstacles, 500)
     movePlatforms()
-    // movePlatformsInterval = setInterval(movePlatforms, 800)
+    movePlatformsInterval = setInterval(movePlatforms, 800)
     displayHomeBases()
     addPlayer()
     
   }
 
-  createGrid()
+  
 
 
 
@@ -238,7 +238,7 @@ function init() {
   }
 
   function resetPlayer() {
-    playerIndex = 2
+    playerIndex = 148
     addPlayer()
   }
 
