@@ -1,5 +1,7 @@
 function init() {
 
+  // * DOM ELEMENTS *******************************************************************************************************************
+
   const startScreen = document.querySelector('.start-screen')
   const playButton = document.querySelector('.play-button')
   const start = document.querySelector('.start')
@@ -33,7 +35,7 @@ function init() {
 
   
 
-  // **** INITIATE GAME GRID
+  // * INITIATE GAME GRID *************************************************************************************************************
 
   function displayIntroPage() {
     resetGame()
@@ -70,7 +72,7 @@ function init() {
 
   
 
-  // **** OBSTACLES, PLATFORMS, BASES
+  // * OBSTACLES, PLATFORMS, BASES ****************************************************************************************************
 
   function displayObstacles() {
     cells.forEach(cell => cell.classList.remove('obstacle-left', 'obstacle-right'))
@@ -161,7 +163,7 @@ function init() {
   
 
 
-  // **** PLAYER MOVEMENT
+  // * PLAYER MOVEMENT ****************************************************************************************************************
 
   function handleMovePlayer(e) {
     cells[playerIndex].classList.remove('player')
@@ -194,7 +196,7 @@ function init() {
     cells[playerIndex].classList.add('player')
   }
 
-  // **** CHECK WIN/LOSS
+  // * CHECK WIN/LOSS *****************************************************************************************************************
 
 
   function displayLives() {
@@ -299,7 +301,7 @@ function init() {
     start.innerHTML = 'Play Again!'
   }
 
-  // * SCORING
+  // * SCORING ************************************************************************************************************************
 
   
   function addPoints(points) {
