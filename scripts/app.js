@@ -275,11 +275,12 @@ function init() {
     }
 
     resultStatus = document.createElement('h3')
+    resultStatus.classList.add('result-status')
     grid.appendChild(resultStatus)
     if (gameWon) {
-      resultStatus.innerHTML = `You win!<br> You scored ${score} points!`
+      resultStatus.innerHTML = `You win! <br> You scored ${score} points!`
     } else if (gameLost) {
-      resultStatus.innerHTML = `Game Over!<br> You scored ${score} points`
+      resultStatus.innerHTML = `Game Over! <br> You scored ${score} points`
     }
   }
 
