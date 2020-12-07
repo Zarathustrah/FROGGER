@@ -226,10 +226,10 @@ function init() {
 
   function playerHit() { 
     cells[playerIndex].classList.remove('player')
+    lives -= 1
     resetPlayer()
     displayLives()
     playerLost()
-    lives -= 1
   }
 
   function resetPlayer() {
