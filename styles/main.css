@@ -108,3 +108,35 @@ h3 {
   text-align: center;
   line-height: '10px';
 }
+
+@media only screen and (max-width: 600px) {
+  .wrapper {
+    height: 500px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    border: 3px solid; 
+  }
+  .start-screen {
+    height: 400px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 3px solid;
+  }
+  
+  .grid {
+    height: 400px;
+    width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid;
+  }
+}

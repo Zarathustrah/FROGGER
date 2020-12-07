@@ -148,14 +148,14 @@ function init() {
   }
 
   function carryPlayerLeft() {
-    if (platformsLeft.includes(playerIndex - 1) && playerIndex % width > 0) {
+    if (platformsLeft.includes(playerIndex) && playerIndex % width > 0) {
       playerIndex -= 1
       addPlayer()
     } 
   }
 
   function carryPlayerRight() {
-    if (platformsRight.includes(playerIndex + 1) && playerIndex % width < width - 1) {
+    if (platformsRight.includes(playerIndex) && playerIndex % width < width - 1) {
       playerIndex += 1
       addPlayer()
     }
@@ -181,7 +181,7 @@ function init() {
         if (playerIndex + width < width * height) playerIndex += width
         break
       default: 
-        console.log('invalid')
+        console.log('invalid key')
     }
     
     addPlayer()
@@ -225,8 +225,8 @@ function init() {
   }
 
   function playerHit() { 
-    cells[playerIndex].classList.remove('player')
     lives -= 1
+    cells[playerIndex].classList.remove('player')
     resetPlayer()
     displayLives()
     playerLost()
@@ -244,7 +244,7 @@ function init() {
       cells[playerIndex].classList.remove('home-base')
       cells[playerIndex].classList.add('player-home')
       addPoints(500)
-      resetPlayer()
+      resetPlayer()      
             
       if (playerCount > 0 && playerHome !== 5) {
         resetPlayer()
