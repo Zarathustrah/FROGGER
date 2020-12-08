@@ -4,7 +4,7 @@ function init() {
 
   const startScreen = document.querySelector('.start-screen')
   const playButton = document.querySelector('.play-button')
-  const start = document.querySelector('.start')
+  const reset = document.querySelector('.reset')
   const grid = document.querySelector('.grid')
   const livesTally = document.querySelector('#lives')
   const scoreTally = document.querySelector('#score')
@@ -40,7 +40,7 @@ function init() {
   function displayIntroPage() {
     resetGame()
     grid.style.display = 'none'
-    start.style.visibility = 'hidden'
+    reset.style.visibility = 'hidden'
     livesScoreDisplay.style.visibility = 'hidden'
     startScreen.style.display = 'flex'
   }
@@ -48,7 +48,7 @@ function init() {
 
   function removeIntroPage() {
     grid.style.display = 'flex'
-    start.style.visibility = 'visible'
+    reset.style.visibility = 'visible'
     livesScoreDisplay.style.visibility = 'visible'
     startScreen.style.display = 'none'
     createGrid()
@@ -125,6 +125,7 @@ function init() {
     })
     displayObstacles()
     obstacleCollision()
+    
   }  
 
   function movePlatforms() {
@@ -142,20 +143,21 @@ function init() {
         return platform - (width - 1)
       }
     })
-    displayPlatforms()
     carryPlayerLeft()
-    carryPlayerRight()
+    carryPlayerRight() 
+    displayPlatforms()
+
   }
 
   function carryPlayerLeft() {
-    if (platformsLeft.includes(playerIndex) && playerIndex % width > 0) {
+    if (platformsLeft.includes(playerIndex - 1) && playerIndex % width > 0) {
       playerIndex -= 1
       addPlayer()
     } 
   }
 
   function carryPlayerRight() {
-    if (platformsRight.includes(playerIndex) && playerIndex % width < width - 1) {
+    if (platformsRight.includes(playerIndex + 1) && playerIndex % width < width - 1) {
       playerIndex += 1
       addPlayer()
     }
@@ -188,7 +190,7 @@ function init() {
     obstacleCollision()
     waterCollision()
     addPoints(100)
-    playerWon()   
+    playerWon()  
   }
  
   function addPlayer() {
@@ -244,7 +246,7 @@ function init() {
       cells[playerIndex].classList.remove('home-base')
       cells[playerIndex].classList.add('player-home')
       addPoints(500)
-      resetPlayer()      
+      resetPlayer()   
             
       if (playerCount > 0 && playerHome !== 5) {
         resetPlayer()
@@ -254,9 +256,7 @@ function init() {
         stopGame()
         endGame()
       }
-
-    }
-    
+    }   
   }
 
   function playerLost() {
@@ -266,7 +266,6 @@ function init() {
       endGame()
       console.log('Game Over!')
     }
-     
   }
 
   function endGame() {
@@ -283,23 +282,11 @@ function init() {
       resultStatus.innerHTML = `Game Over! <br> You scored ${score} points`
     }
   }
-
-  
-
-
-
-
-
-
-
-
-
-
   
   function stopGame() {
     clearInterval(moveObstaclesInterval)
     clearInterval(movePlatformsInterval)
-    start.innerHTML = 'Play Again!'
+    reset.innerHTML = 'Reset'
   }
 
   // * SCORING ************************************************************************************************************************
@@ -342,13 +329,13 @@ function init() {
     livesTally.innerHTML = 5
     scoreTally.innerHTML = 0
     stopGame()
-    // const collision = false
   }
 
-  start.addEventListener('click', displayIntroPage)
+  reset.addEventListener('click', displayIntroPage)
   playButton.addEventListener('click', removeIntroPage)
   document.addEventListener('keydown', handleMovePlayer)
  
 
 }
 window.addEventListener('DOMContentLoaded', init)
+

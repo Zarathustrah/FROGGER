@@ -24,6 +24,7 @@ body {
   border: 3px solid; 
 }
 
+
 .lives-score {
   display: flex;
 }
@@ -88,7 +89,7 @@ h3 {
   background-color: black;
 }
 
-.start {
+.reset {
   margin: 15px;
 }
 
